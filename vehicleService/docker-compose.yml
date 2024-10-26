@@ -1,0 +1,17 @@
+version: "4"
+services:
+  mongoDb:
+    image: mongo:latest
+    container_name: mongoDB
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_DATABASE: vehicleDB
+    volumes:
+      - ./data:/data/db
+
+
+
+
