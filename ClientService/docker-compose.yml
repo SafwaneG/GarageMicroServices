@@ -1,0 +1,13 @@
+version: "3.8"  # Use a supported version
+services:
+  mongoDb:
+    image: mongo:latest
+    container_name: mongoDB1
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_DATABASE: clientDb
+    volumes:
+      - ./data:/data/db
