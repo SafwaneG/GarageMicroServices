@@ -2,6 +2,7 @@ package com.garageSystem.vehicleService.controller;
 
 import com.garageSystem.vehicleService.model.dto.RequestVehicleDTO;
 import com.garageSystem.vehicleService.model.dto.ResponseVehicleDTO;
+import com.garageSystem.vehicleService.proxy.ClientProxy;
 import com.garageSystem.vehicleService.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VehicleController {
     private final VehicleService vehicleService;
+
     @PostMapping
     public ResponseVehicleDTO createVehicle(@RequestBody RequestVehicleDTO requestVehicle){
            return vehicleService.createVehicle(requestVehicle);

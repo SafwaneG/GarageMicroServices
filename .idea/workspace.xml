@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="661f6372-dfee-4b49-b5e4-c87de9a6d50b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/dto/ClientResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/proxy/ClientProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicleService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/VehicleServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/VehicleServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/controller/VehicleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/dto/RequestVehicleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/dto/RequestVehicleDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +41,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2nyQmNVZBbwpaHkM8IwQ7RxYX5I" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -48,7 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "C:/Users/dell/Desktop/GarageMicroServices",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
