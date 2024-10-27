@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6740e7d5-ccfa-445f-aaa6-c0be294540b3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="661f6372-dfee-4b49-b5e4-c87de9a6d50b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/dto/RequestVehicleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/dto/RequestVehicleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,43 +14,65 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
+  "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2nyQITRcvqwy4Ur433kESsaNNSv" />
+  <component name="ProjectId" id="2nyQmNVZBbwpaHkM8IwQ7RxYX5I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/safouane/Desktop/GarageMicroServices",
+    "last_opened_file_path": "C:/Users/dell/Desktop/GarageMicroServices",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\safouane\Desktop\GarageMicroServices" />
+      <recent name="C:\Users\dell\Desktop\GarageMicroServices" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="ClientService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.garagesystem.clientservice.ClientServiceApplication" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VehicleServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="vehicleService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.garageSystem.vehicleService.VehicleServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -58,16 +81,22 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6740e7d5-ccfa-445f-aaa6-c0be294540b3" name="Changes" comment="" />
-      <created>1729942758080</created>
+      <changelist id="661f6372-dfee-4b49-b5e4-c87de9a6d50b" name="Changes" comment="" />
+      <created>1729942994239</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1729942758080</updated>
-      <workItem from="1729942758927" duration="1144000" />
+      <updated>1729942994239</updated>
+      <workItem from="1729942995279" duration="1666000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$/vehicleService" />
+    </ignored-roots>
   </component>
 </project>
