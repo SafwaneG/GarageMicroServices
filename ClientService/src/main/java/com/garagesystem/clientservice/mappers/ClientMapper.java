@@ -1,16 +1,18 @@
 package com.garagesystem.clientservice.mappers;
 
 import com.garagesystem.clientservice.model.dto.ClientDto;
+import com.garagesystem.clientservice.model.dto.ClientResponseDto;
 import com.garagesystem.clientservice.model.entity.Client;
 import com.mongodb.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 @Component
-public class ClientMapper implements Function<Client, ClientDto> {
+public class ClientMapper implements Function<Client, ClientResponseDto> {
     @Override
-    public ClientDto apply(Client client) {
-        return new ClientDto(client.getIdentityNumber(),
+    public ClientResponseDto apply(Client client) {
+        return new ClientResponseDto(
+                client.getId(),
                 client.getFirstName(),
                 client.getLastName(),
                 client.getPhoneNumber(),

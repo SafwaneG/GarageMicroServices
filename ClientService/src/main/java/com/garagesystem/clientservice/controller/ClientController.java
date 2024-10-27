@@ -1,6 +1,7 @@
 package com.garagesystem.clientservice.controller;
 
 import com.garagesystem.clientservice.model.dto.ClientDto;
+import com.garagesystem.clientservice.model.dto.ClientResponseDto;
 import com.garagesystem.clientservice.service.ClientService;
 import jakarta.websocket.server.PathParam;
 import lombok.Cleanup;
@@ -16,16 +17,16 @@ public class ClientController {
     private final ClientService clientService;
 
     @PostMapping
-    public ClientDto createClient(@RequestBody ClientDto clientDto) {
+    public ClientResponseDto createClient(@RequestBody ClientDto clientDto) {
         return clientService.createClient(clientDto);
     }
     @GetMapping
-    public List<ClientDto> getAllClients() {
+    public List<ClientResponseDto> getAllClients() {
         return clientService.getAllClients();
     }
 
     @GetMapping("/{identityNumber}")
-    public ClientDto getClient(@PathVariable String identityNumber) {
+    public ClientResponseDto getClient(@PathVariable String identityNumber) {
         return clientService.getClient(identityNumber);
     }
 
