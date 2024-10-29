@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="vehicleService" />
         <module name="ClientService" />
+        <module name="ApiGateway" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiGateway" options="-parameters" />
       <module name="ClientService" options="-parameters" />
       <module name="vehicleService" options="-parameters" />
     </option>

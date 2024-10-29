@@ -12,6 +12,9 @@ ClientService/data/
 vehicleService/HELP.md
 vehicleService/target/
 vehicleService/data/
+ApiGateway/target/
+ApiGateway/HELP.md
+ApiGateway/data/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

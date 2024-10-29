@@ -5,25 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="661f6372-dfee-4b49-b5e4-c87de9a6d50b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientService/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientService/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientService/src/main/java/com/garagesystem/clientservice/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientService/src/main/java/com/garagesystem/clientservice/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientService/src/main/java/com/garagesystem/clientservice/controllerAdvice/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ClientService/src/main/java/com/garagesystem/clientservice/controllerAdvice/ClientControllerAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ClientService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/entity/VehicleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/model/entity/VehicleModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/proxy/ClientProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/proxy/ClientProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/java/com/garageSystem/vehicleService/service/VehicleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vehicleService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/vehicleService/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -64,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "ApiGateWay",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "C:/Users/dell/Desktop/GarageMicroServices",
     "node.js.detected.package.eslint": "true",
@@ -88,10 +85,17 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.VehicleServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
     <configuration default="true" type="NimRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="nim.task.build.to.cache" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ApiGateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.apigateway.ApiGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ClientServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -156,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1729942994239</updated>
       <workItem from="1729942995279" duration="1666000" />
-      <workItem from="1730235800581" duration="610000" />
+      <workItem from="1730235800581" duration="1832000" />
     </task>
     <servers />
   </component>
