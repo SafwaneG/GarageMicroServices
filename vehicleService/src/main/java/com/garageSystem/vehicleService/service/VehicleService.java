@@ -18,9 +18,10 @@ public class VehicleService {
 
     private final ClientProxy clientProxy;
     public ResponseVehicleDTO createVehicle(RequestVehicleDTO requestVehicle) {
-        ClientResponseDto client=clientProxy.searchClient(requestVehicle.ownerIdentityNumber());
+        ClientResponseDto client = clientProxy.searchClient(requestVehicle.ownerIdentityNumber());
+        System.out.println(client);
         if (client != null) {
-            VehicleModel vehicle = new VehicleModel(client.id(), requestVehicle.chassisNumber(), requestVehicle.chassisNumber(), requestVehicle.registrationNumber(), requestVehicle.brand(), requestVehicle.model(), requestVehicle.yearOfManufacture(), requestVehicle.color(), requestVehicle.mileage(), requestVehicle.fuelType(), requestVehicle.dateOfPurchase(), requestVehicle.vehicleCondition());
+            VehicleModel vehicle = new VehicleModel(client.id(), requestVehicle.chassisNumber(), requestVehicle.registrationNumber(), requestVehicle.brand(), requestVehicle.model(), requestVehicle.yearOfManufacture(), requestVehicle.color(), requestVehicle.mileage(), requestVehicle.fuelType(), requestVehicle.dateOfPurchase(), requestVehicle.vehicleCondition());
             VehicleModel vehicleCreated = vehicleRepo.save(vehicle);
             return new ResponseVehicleDTO(vehicleCreated.getId(), client.id(), vehicleCreated.getChassisNumber(), vehicleCreated.getRegistrationNumber(), vehicleCreated.getBrand(), vehicleCreated.getModel(), vehicleCreated.getYearOfManufacture(), vehicleCreated.getColor(), vehicleCreated.getMileage(), vehicleCreated.getFuelType(), vehicleCreated.getDateOfPurchase(), vehicleCreated.getVehicleCondition());
         }

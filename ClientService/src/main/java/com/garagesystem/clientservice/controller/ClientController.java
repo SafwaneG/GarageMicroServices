@@ -18,6 +18,7 @@ public class ClientController {
 
     @PostMapping
     public ClientResponseDto createClient(@RequestBody ClientDto clientDto) {
+        System.out.println("in controller");
         return clientService.createClient(clientDto);
     }
     @GetMapping
@@ -27,6 +28,7 @@ public class ClientController {
 
     @GetMapping("/{identityNumber}")
     public ClientResponseDto getClient(@PathVariable String identityNumber) {
+        System.out.println("client got called");
         return clientService.getClient(identityNumber);
     }
 

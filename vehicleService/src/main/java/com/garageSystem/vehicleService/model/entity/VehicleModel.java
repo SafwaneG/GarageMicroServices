@@ -38,4 +38,18 @@ public class VehicleModel {
     private Date dateOfPurchase;
      @NonNull
     private VehicleCondition vehicleCondition;
+
+    public VehicleModel(@NonNull String ownerId, @NonNull String chassisNumber, @NonNull String registrationNumber, @NonNull String brand, @NonNull String model, @NonNull Date yearOfManufacture, @NonNull String color, int mileage, @NonNull String fuelType, @NonNull Date dateOfPurchase, @NonNull VehicleCondition vehicleCondition) {
+        this.ownerId = ownerId;
+        this.chassisNumber = chassisNumber;
+        this.registrationNumber = registrationNumber;
+        this.brand = brand;
+        this.model = model;
+        this.yearOfManufacture = yearOfManufacture;
+        this.color = color;
+        this.mileage = mileage;
+        this.fuelType = fuelType;
+        this.dateOfPurchase = dateOfPurchase;
+        this.vehicleCondition = vehicleCondition;
+    }
 }
