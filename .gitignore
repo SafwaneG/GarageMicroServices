@@ -14,7 +14,6 @@ vehicleService/target/
 vehicleService/data/
 ApiGateway/target/
 ApiGateway/HELP.md
-ApiGateway/volume-data/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
