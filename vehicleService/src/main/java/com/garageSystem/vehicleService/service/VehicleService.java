@@ -4,10 +4,10 @@ import com.garageSystem.vehicleService.model.dto.ClientResponseDto;
 import com.garageSystem.vehicleService.model.dto.RequestVehicleDTO;
 import com.garageSystem.vehicleService.model.dto.ResponseVehicleDTO;
 import com.garageSystem.vehicleService.model.entity.VehicleModel;
-import com.garageSystem.vehicleService.proxy.ClientProxy;
 import com.garageSystem.vehicleService.repository.VehicleRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VehicleService {
     private final VehicleRepo vehicleRepo;
+    private final ClientService clientService;
 
-    private final ClientProxy clientProxy;
     public ResponseVehicleDTO createVehicle(RequestVehicleDTO requestVehicle) {
-        ClientResponseDto client = clientProxy.searchClient(requestVehicle.ownerIdentityNumber());
+        ClientResponseDto client = clientService.searchClient(requestVehicle.ownerIdentityNumber());
         System.out.println(client);
         if (client != null) {
             VehicleModel vehicle = new VehicleModel(client.id(), requestVehicle.chassisNumber(), requestVehicle.registrationNumber(), requestVehicle.brand(), requestVehicle.model(), requestVehicle.yearOfManufacture(), requestVehicle.color(), requestVehicle.mileage(), requestVehicle.fuelType(), requestVehicle.dateOfPurchase(), requestVehicle.vehicleCondition());
