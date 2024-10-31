@@ -7,6 +7,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+ClientService/.idea
 ClientService/target/
 ClientService/data/
 vehicleService/HELP.md
@@ -32,6 +33,7 @@ vehicleService/data/
 *.ipr
 
 ### NetBeans ###
+vehicleService/.idea
 vehicleService/nbproject/private/
 vehicleService/nbbuild/
 vehicleService/dist/
