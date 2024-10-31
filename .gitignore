@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -9,7 +9,6 @@
 /dataSources.local.xml
 ClientService/target/
 ClientService/data/
-=======
 vehicleService/HELP.md
 vehicleService/target/
 vehicleService/data/
@@ -25,7 +24,7 @@ vehicleService/data/
 .settings
 .springBeans
 .sts4-cache
-
+.idea/
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -44,4 +43,5 @@ build/
 
 ### VS Code ###
 .vscode/
->>>>>>> vehicleService
+
+

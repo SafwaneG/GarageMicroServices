@@ -1,8 +1,10 @@
 package com.garageSystem.vehicleService.service;
 
+import com.garageSystem.vehicleService.model.dto.ClientResponseDto;
 import com.garageSystem.vehicleService.model.dto.RequestVehicleDTO;
 import com.garageSystem.vehicleService.model.dto.ResponseVehicleDTO;
 import com.garageSystem.vehicleService.model.entity.VehicleModel;
+import com.garageSystem.vehicleService.proxy.ClientProxy;
 import com.garageSystem.vehicleService.repository.VehicleRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VehicleService {
     private final VehicleRepo vehicleRepo;
-    public ResponseVehicleDTO createVehicle(RequestVehicleDTO requestVehicle){
-        VehicleModel vehicle= new VehicleModel(requestVehicle.ownerId(),requestVehicle.chassisNumber(),requestVehicle.chassisNumber(),requestVehicle.registrationNumber(),requestVehicle.brand(),requestVehicle.model(),requestVehicle.yearOfManufacture(),requestVehicle.color(),requestVehicle.mileage(),requestVehicle.fuelType(),requestVehicle.dateOfPurchase(),requestVehicle.vehicleCondition());
-         VehicleModel vehicleCreated=vehicleRepo.save(vehicle);
-         return new ResponseVehicleDTO(vehicleCreated.getId(),vehicleCreated.getOwnerId(),vehicleCreated.getChassisNumber(),vehicleCreated.getRegistrationNumber(),vehicleCreated.getBrand(),vehicleCreated.getModel(),vehicleCreated.getYearOfManufacture(),vehicleCreated.getColor(),vehicleCreated.getMileage(),vehicleCreated.getFuelType(),vehicleCreated.getDateOfPurchase(),vehicleCreated.getVehicleCondition());
 
+    private final ClientProxy clientProxy;
+    public ResponseVehicleDTO createVehicle(RequestVehicleDTO requestVehicle) {
+        ClientResponseDto client = clientProxy.searchClient(requestVehicle.ownerIdentityNumber());
+        System.out.println(client);
+        if (client != null) {
+            VehicleModel vehicle = new VehicleModel(client.id(), requestVehicle.chassisNumber(), requestVehicle.registrationNumber(), requestVehicle.brand(), requestVehicle.model(), requestVehicle.yearOfManufacture(), requestVehicle.color(), requestVehicle.mileage(), requestVehicle.fuelType(), requestVehicle.dateOfPurchase(), requestVehicle.vehicleCondition());
+            VehicleModel vehicleCreated = vehicleRepo.save(vehicle);
+            return new ResponseVehicleDTO(vehicleCreated.getId(), client.id(), vehicleCreated.getChassisNumber(), vehicleCreated.getRegistrationNumber(), vehicleCreated.getBrand(), vehicleCreated.getModel(), vehicleCreated.getYearOfManufacture(), vehicleCreated.getColor(), vehicleCreated.getMileage(), vehicleCreated.getFuelType(), vehicleCreated.getDateOfPurchase(), vehicleCreated.getVehicleCondition());
+        }
+        return null;
     }
 
         public List<ResponseVehicleDTO> getAllVehicles() {
