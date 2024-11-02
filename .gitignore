@@ -1,24 +1,27 @@
-
 # Default ignored files
 /shelf/
 /workspace.xml
-# Editor-based HTTP Client requests
 /httpRequests/
-# Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-ClientService/target/
-ClientService/data/
-vehicleService/HELP.md
-vehicleService/target/
-vehicleService/data/
-ApiGateway/target/
-ApiGateway/HELP.md
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
+# Maven target directories
+**/target/
+# Containers volumes
+**/data/**
+# IntelliJ IDEA
+**/.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/.nb-gradle/
+
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -26,24 +29,17 @@ ApiGateway/HELP.md
 .settings
 .springBeans
 .sts4-cache
-.idea/
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
 
-### NetBeans ###
-vehicleService/nbproject/private/
-vehicleService/nbbuild/
-vehicleService/dist/
-vehicleService/nbdist/
-vehicleService/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VS Code
 .vscode/
 
+# Specific files
+vehicleService/HELP.md
+ApiGateway/HELP.md
 
+# Exclude specific files in target/build directories
+!.mvn/wrapper/maven-wrapper.jar
+!/src/main//target/
+!/src/test//target/
+!/src/main//build/
+!/src/test//build/

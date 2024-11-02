@@ -16,27 +16,27 @@ import java.util.List;
 public class VehicleService {
     private final VehicleRepo vehicleRepo;
     private final ClientService clientService;
-
+   private ClientResponseDto client;
     public ResponseVehicleDTO createVehicle(RequestVehicleDTO requestVehicle) {
-        ClientResponseDto client = clientService.searchClient(requestVehicle.ownerIdentityNumber());
+   client = clientService.searchClient(requestVehicle.ownerIdentityNumber());
         System.out.println(client);
         if (client != null) {
             VehicleModel vehicle = new VehicleModel(client.id(), requestVehicle.chassisNumber(), requestVehicle.registrationNumber(), requestVehicle.brand(), requestVehicle.model(), requestVehicle.yearOfManufacture(), requestVehicle.color(), requestVehicle.mileage(), requestVehicle.fuelType(), requestVehicle.dateOfPurchase(), requestVehicle.vehicleCondition());
             VehicleModel vehicleCreated = vehicleRepo.save(vehicle);
-            return new ResponseVehicleDTO(vehicleCreated.getId(), client.id(), vehicleCreated.getChassisNumber(), vehicleCreated.getRegistrationNumber(), vehicleCreated.getBrand(), vehicleCreated.getModel(), vehicleCreated.getYearOfManufacture(), vehicleCreated.getColor(), vehicleCreated.getMileage(), vehicleCreated.getFuelType(), vehicleCreated.getDateOfPurchase(), vehicleCreated.getVehicleCondition());
+            return new ResponseVehicleDTO(client.firstName(), client.email(), vehicleCreated.getRegistrationNumber(),  vehicleCreated.getVehicleCondition());
         }
         return null;
     }
 
         public List<ResponseVehicleDTO> getAllVehicles() {
         return vehicleRepo.findAll().stream().map(
-                vehicle->new ResponseVehicleDTO(vehicle.getId(),vehicle.getOwnerId(),vehicle.getChassisNumber(),vehicle.getRegistrationNumber(),vehicle.getBrand(),vehicle.getModel(),vehicle.getYearOfManufacture(),vehicle.getColor(),vehicle.getMileage(),vehicle.getFuelType(),vehicle.getDateOfPurchase(),vehicle.getVehicleCondition()))
+                vehicle->new ResponseVehicleDTO(client.firstName(),client.email(),vehicle.getRegistrationNumber(),vehicle.getVehicleCondition()))
                 .toList();
 
     }
 
     public ResponseVehicleDTO getVehicle(String registrationNumber) {
         VehicleModel vehicle=vehicleRepo.findByRegistrationNumber(registrationNumber);
-        return new ResponseVehicleDTO(vehicle.getId(),vehicle.getOwnerId(),vehicle.getChassisNumber(),vehicle.getRegistrationNumber(),vehicle.getBrand(),vehicle.getModel(),vehicle.getYearOfManufacture(),vehicle.getColor(),vehicle.getMileage(),vehicle.getFuelType(),vehicle.getDateOfPurchase(),vehicle.getVehicleCondition());
+        return new ResponseVehicleDTO(client.firstName(),client.email(),vehicle.getRegistrationNumber(),vehicle.getVehicleCondition());
     }
 }
