@@ -51,7 +51,7 @@ public class WorkshopPlanningService {
         );
         System.out.println("im here");
         WorkshopPlanning savedWorkshop = workshopPlanningRepo.save(workshopPlanning);
-        WorkshopPlacedEvent workshopPlacedEvent= new WorkshopPlacedEvent(vehicle.registrationNumber(),vehicle.email());
+        WorkshopPlacedEvent workshopPlacedEvent= new WorkshopPlacedEvent(vehicle.registrationNumber(),vehicle.email(),vehicle.name());
         System.out.println("start sending");
         kafkaTemplate.send("workshop-plannified",workshopPlacedEvent);
         System.out.println("finished sendign");
