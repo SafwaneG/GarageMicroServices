@@ -8,6 +8,8 @@ import org.springframework.web.servlet.function.RequestPredicates;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 
+import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions.setPath;
+
 @Configuration
 public class Route {
 
@@ -18,6 +20,27 @@ public class Route {
                 .route(RequestPredicates.path("/client/{id}"), request ->
                         HandlerFunctions.http("http://localhost:8081/client/" + request.pathVariable("id")).handle(request))
                 .build();
+    }
+    @Bean
+    public RouterFunction<ServerResponse> routerClientSwaggerRoute() {
+        return GatewayRouterFunctions.route("client_service_swagger")
+                .route(RequestPredicates.path("/aggregate/client-service/v3/api-docs"), HandlerFunctions.http("http://localhost:8081"))
+                .filter(setPath("/v3/api-docs"))
+               .build();
+    }
+    @Bean
+    public RouterFunction<ServerResponse> routerVehicleSwaggerRoute() {
+        return GatewayRouterFunctions.route("vehicle_service_swagger")
+                .route(RequestPredicates.path("/aggregate/vehicle-service/v3/api-docs"), HandlerFunctions.http("http://localhost:8080"))
+                .filter(setPath("/v3/api-docs"))
+                .build();
+    }
+      @Bean
+    public RouterFunction<ServerResponse> routerWorkshopSwaggerRoute() {
+        return GatewayRouterFunctions.route("workshop_service_swagger")
+                .route(RequestPredicates.path("/aggregate/workshop-service/v3/api-docs"), HandlerFunctions.http("http://localhost:8082"))
+                .filter(setPath("/v3/api-docs"))
+               .build();
     }
 
     @Bean
