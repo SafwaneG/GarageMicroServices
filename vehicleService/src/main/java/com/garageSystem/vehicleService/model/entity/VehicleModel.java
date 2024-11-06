@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -17,10 +18,13 @@ public class VehicleModel {
     @Id
     private String id;
     @NonNull
+    @Indexed(unique = true)
     private String ownerId;
      @NonNull
+     @Indexed(unique = true)
     private String chassisNumber;
      @NonNull
+     @Indexed(unique = true)
     private String registrationNumber;
      @NonNull
     private String brand;

@@ -1,10 +1,7 @@
-
 # Default ignored files
 /shelf/
 /workspace.xml
-# Editor-based HTTP Client requests
 /httpRequests/
-# Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
 ClientService/.idea
@@ -17,7 +14,23 @@ vehicleService/data/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# Maven target directories
+**/target/
+# Containers volumes
+**/data/**
+# IntelliJ IDEA
+**/.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/.nb-gradle/
+
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -25,12 +38,6 @@ vehicleService/data/
 .settings
 .springBeans
 .sts4-cache
-.idea/
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
 
 ### NetBeans ###
 vehicleService/.idea
@@ -43,7 +50,16 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+
 .vscode/
 
+# Specific files
+vehicleService/HELP.md
+ApiGateway/HELP.md
 
+# Exclude specific files in target/build directories
+!.mvn/wrapper/maven-wrapper.jar
+!/src/main//target/
+!/src/test//target/
+!/src/main//build/
+!/src/test//build/
