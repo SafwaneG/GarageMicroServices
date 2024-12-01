@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: vehicleService
+
+  data:
+    mongodb:
+      host: ${DB_HOST}
+      port: ${DB_PORT}
+      database: ${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      authentication-database: ${MONGO_AUTH_DATABASE}
+
+  client:
+    url: ${CLIENT_SERVICE_URL}
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+
+security:
+  authorization: "disabled"
