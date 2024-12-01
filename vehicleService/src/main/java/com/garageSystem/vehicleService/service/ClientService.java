@@ -8,7 +8,9 @@ import org.springframework.web.client.RestClient;
 @Service
 public class ClientService {
     private final RestClient restClient;
-    public  ClientService(@Value("${client.url}") String baseUrl){
+
+    public  ClientService(@Value("${spring.client.url}") String baseUrl){
+        System.out.println("baseurl"+baseUrl);
             restClient=RestClient.builder()
                     .baseUrl(baseUrl)
                     .build();
