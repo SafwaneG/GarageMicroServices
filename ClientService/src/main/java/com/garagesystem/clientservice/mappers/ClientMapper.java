@@ -25,8 +25,9 @@ public class ClientMapper implements Function<Client, ClientResponseDto> {
                 clientDto.firstName(),
                 clientDto.lastName(),
                 clientDto.address(),
-                clientDto.email(),
-                clientDto.phoneNumber()
+                clientDto.phoneNumber(),
+                clientDto.email()
+
                 );
     }
 }
