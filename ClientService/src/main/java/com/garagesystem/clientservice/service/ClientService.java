@@ -27,6 +27,13 @@ public class ClientService {
     public List<ClientResponseDto> getAllClients() {
         return clientRepository.findAll().stream().map(clientMapper).collect(Collectors.toList());
     }
+    public List<String> getAllIdentityNumber() {
+        return clientRepository.findAll()
+                .stream()
+                .map(Client::getIdentityNumber)
+                .collect(Collectors.toList());
+    }
+
 
     public ClientResponseDto getClient(String identityNumber) throws RuntimeException {
         Optional<Client> requestedClient = clientRepository.findByIdentityNumber(identityNumber);
