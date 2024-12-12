@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "WorkshopEvent",
+  "namespace": "com.workshopPlanning.event",
+  "fields": [
+    {
+      "name": "registrationNumber",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    }
+  ]
+}

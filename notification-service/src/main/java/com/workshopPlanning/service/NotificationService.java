@@ -1,6 +1,7 @@
 package com.workshopPlanning.service;
 
-import com.workshopPlanning.event.WorkshopPlacedEvent;
+import com.workshopPlanning.event.WorkshopEvent;
+import com.workshopPlanning.model.MaintenanceStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -9,39 +10,55 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
-    public class NotificationService {
+public class NotificationService {
 
-        private final JavaMailSender javaMailSender;
-        @KafkaListener(topics = "workshop-plannified")
-        public void listen(WorkshopPlacedEvent workshopPlanningEvent){
-            System.out.println("im listen");
-            log.info("get message from workshop-plannified",workshopPlanningEvent);
-            MimeMessagePreparator messagePreparator = mimeMessage -> {
-                MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-                messageHelper.setFrom("zsGarage3@email.com");
-                messageHelper.setTo(workshopPlanningEvent.getEmail());
-                messageHelper.setSubject(String.format("Your vehicle with registrationNumber %s is placed successfully", workshopPlanningEvent.getRegistrationNumber()));
-                messageHelper.setText(String.format("""
-                            Hi Dear
+    private final JavaMailSender javaMailSender;
 
-                            Your Vehicle with registration number %s is now plannified in a workshop successfully.
+    @KafkaListener(topics = "workshop-plannified")
+    public void listen(WorkshopEvent workshopPlanningEvent) {
+        log.info("Received WorkshopEvent: {}", workshopPlanningEvent);
+        MaintenanceStatus status;
+        try {
+            status = MaintenanceStatus.valueOf(workshopPlanningEvent.getType().toString());
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid maintenance status received: {}", workshopPlanningEvent.getType());
+            return;
+        }
+        String statusDescription = status.getDescription();
 
-                            Best Regards
+        MimeMessagePreparator messagePreparator = mimeMessage -> {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+            messageHelper.setFrom("zsGarage3@email.com");
+            messageHelper.setTo(workshopPlanningEvent.getEmail().toString());
+            messageHelper.setSubject(String.format("Your vehicle with registration number %s has been updated", workshopPlanningEvent.getRegistrationNumber()));
+            messageHelper.setText(String.format("""
+                            Hi Dear , %s,
+
+                            Your vehicle with registration number %s has a new status update: %s
+
+                            Status Description: %s
+
+                            Best Regards,
                             zsGarage
                             """,
-                        workshopPlanningEvent.getRegistrationNumber()));
-            };
-            try {
-                javaMailSender.send(messagePreparator);
-                log.info("Order Notifcation email sent!!");
-            } catch (MailException e) {
-                log.error("Exception occurred when sending mail", e);
-                throw new RuntimeException("Exception occurred when sending mail to springshop@email.com", e);
-            }
+                    workshopPlanningEvent.getName(),
+                    workshopPlanningEvent.getRegistrationNumber(),
+                    status.name(),
+                    statusDescription
+            ));
+        };
+
+        // Send the email
+        try {
+            javaMailSender.send(messagePreparator);
+            log.info("Notification email sent for registration number: {}", workshopPlanningEvent.getRegistrationNumber());
+        } catch (MailException e) {
+            log.error("Exception occurred when sending mail", e);
+            throw new RuntimeException("Exception occurred when sending mail", e);
         }
     }
-
-
+}
