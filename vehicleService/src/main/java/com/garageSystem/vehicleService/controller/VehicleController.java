@@ -15,6 +15,7 @@ import java.util.List;
 public class VehicleController {
     private final VehicleService vehicleService;
 
+
     @PostMapping
     public ResponseVehicleDTO createVehicle(@RequestBody RequestVehicleDTO requestVehicle){
            return vehicleService.createVehicle(requestVehicle);

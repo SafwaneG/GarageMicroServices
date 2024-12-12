@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/client")
+
 public class ClientController {
     private final ClientService clientService;
 
@@ -25,7 +26,10 @@ public class ClientController {
     public List<ClientResponseDto> getAllClients() {
         return clientService.getAllClients();
     }
-
+@GetMapping("/identityNumber")
+public  List<String> getAllIdentityNumber(){
+        return clientService.getAllIdentityNumber();
+}
     @GetMapping("/{identityNumber}")
     public ClientResponseDto getClient(@PathVariable String identityNumber) {
         System.out.println("client got called");
