@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -142,6 +143,7 @@ public class WorkshopPlanningService {
         return new WorkshopPlanningResponse(workshopPlanning.getIdWorkshop(),workshopPlanning.getPlanningDate(),workshopPlanning.getMaintenanceJobs());
 
     }
+
 
     }
 
