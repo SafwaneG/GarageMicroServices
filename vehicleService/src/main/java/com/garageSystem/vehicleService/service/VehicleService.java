@@ -12,6 +12,7 @@ import org.springframework.web.client.RestClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -66,4 +67,14 @@ public class VehicleService {
        }
         return  new ResponseVehicleDtoList(vehicles);
     }
-}
+
+    public List<String> getAllRegistrationsNumbers() {
+            return vehicleRepo.findAll()
+                    .stream()
+                    .map(VehicleModel::getRegistrationNumber)
+                    .collect(Collectors.toList());
+        }
+
+
+    }
+

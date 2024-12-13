@@ -3,10 +3,12 @@ package com.garageSystem.vehicleService.controller;
 import com.garageSystem.vehicleService.model.dto.RequestVehicleDTO;
 import com.garageSystem.vehicleService.model.dto.ResponseVehicleDTO;
 import com.garageSystem.vehicleService.model.dto.ResponseVehicleDtoList;
+import com.garageSystem.vehicleService.model.entity.VehicleCondition;
 import com.garageSystem.vehicleService.service.VehicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -35,5 +37,15 @@ public class VehicleController {
        return vehicleService.getSomeVehicles(registrationNumbers);
 
     }
-
+    @GetMapping("/registrationNumbers")
+    public  List<String> getAllRegistrationsNumbers(){
+        return vehicleService.getAllRegistrationsNumbers();
+    }
+    @GetMapping("/conditions")
+    public List<String> getAllStatusWorkshop() {
+        return Arrays.stream(VehicleCondition.values())
+                .map(Enum::name)
+                .toList();
+    }
 }
+
