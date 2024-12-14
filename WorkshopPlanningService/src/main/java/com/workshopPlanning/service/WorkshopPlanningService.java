@@ -39,12 +39,12 @@ public class WorkshopPlanningService {
                     jobRequest.startTime(),
                     jobRequest.endTime(),
                     jobRequest.description(),
-                    jobRequest.status(),
+                    MaintenanceStatus.SCHEDULED,
                     vehicle.registrationNumber(),
                     vehicle.vehicleCondition()
             );
             maintenanceJobs.add(maintenanceJob);
-            WorkshopEvent workshopPlacedEvent = new WorkshopEvent(vehicle.registrationNumber(), vehicle.email(), vehicle.name(),maintenanceJob.getStatus().toString());
+            WorkshopEvent workshopPlacedEvent = new WorkshopEvent(vehicle.registrationNumber(), vehicle.email(), vehicle.name(),maintenanceJob.getStatus().toString(),0d);
             System.out.println("Sending event for vehicle: " + vehicle.registrationNumber());
             kafkaTemplate.send("workshop-plannified", workshopPlacedEvent);
 
@@ -69,32 +69,26 @@ public class WorkshopPlanningService {
                 savedWorkshop.getMaintenanceJobs()
         );
     }
-    public void updateMaintenance(String workshopId, String jobId , MaintenanceUpdateRequest maintenanceUpdateRequest) {
-        MaintenanceStatus newStatus= maintenanceUpdateRequest.getNewStatus();
-        Date newEndDate= maintenanceUpdateRequest.getNewEndDate();
+    public void updateMaintenance(String workshopId, String jobId, MaintenanceUpdateRequest maintenanceUpdateRequest) {
+        MaintenanceStatus newStatus = maintenanceUpdateRequest.getNewStatus();
+        Date newEndDate = maintenanceUpdateRequest.getNewEndDate();
+        Double newAmount = maintenanceUpdateRequest.getAmount();
+
         WorkshopPlanning workshopPlanning = workshopPlanningRepo.findByIdWorkshop(workshopId);
-        System.out.println(workshopPlanning);
         if (workshopPlanning == null) {
             throw new IllegalArgumentException("Workshop planning not found for ID: " + workshopId);
         }
-        workshopPlanning.getMaintenanceJobs().forEach(job -> {
-            if (job == null) {
-                System.out.println("Null job found in maintenance jobs list.");
-            } else {
-                System.out.println("Job ID: " + job.getJobId());
-            }
-        });
+
         MaintenanceJob jobToUpdate = workshopPlanning.getMaintenanceJobs().stream()
-                .filter(Objects::nonNull)  // Filter out null jobs
-                .filter(job -> job.getJobId().equals(jobId))
+                .filter(job -> job != null && job.getJobId().equals(jobId))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Maintenance job not found for ID: " + jobId));
 
-        System.out.println("jobid"+jobToUpdate.getJobId());
         boolean statusChanged = newStatus != jobToUpdate.getStatus();
+
         if (newStatus != null) {
             MaintenanceService maintenanceService = new MaintenanceService();
-            VehicleCondition vehicleCondition=maintenanceService.mapStatusToCondition(newStatus);
+            VehicleCondition vehicleCondition = maintenanceService.mapStatusToCondition(newStatus);
 
             jobToUpdate.setStatus(newStatus);
             jobToUpdate.setVehicleCondition(vehicleCondition);
@@ -108,21 +102,27 @@ public class WorkshopPlanningService {
 
         if (statusChanged) {
             VehicleResponse vehicleDetails = vehicleService.searchVehicle(jobToUpdate.getRegistrationNumber());
+
             if (vehicleDetails != null) {
+                // Ensure amount is set (if newAmount is null, set it to 0)
+                System.out.println(newAmount);
+                double amountToSend = (newAmount != null && newStatus == MaintenanceStatus.COMPLETED) ? newAmount : 0;
+
                 WorkshopEvent workshopEvent = new WorkshopEvent(
                         jobToUpdate.getRegistrationNumber(),
                         vehicleDetails.email(),
                         vehicleDetails.name(),
-                        newStatus.toString()
+                        newStatus.toString(),
+                        amountToSend // Ensure amount is always included
                 );
+
                 kafkaTemplate.send("workshop-plannified", workshopEvent);
-                System.out.println("Client notified about status change: " + newStatus);
+                System.out.println("Client notified about status change to " + newStatus + " with amount: " + amountToSend);
             } else {
                 System.err.println("Could not notify client: vehicle details not found.");
             }
         }
     }
-
 
 
 
