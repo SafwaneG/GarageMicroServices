@@ -4,17 +4,17 @@ spring:
 
   data:
     mongodb:
-      host: ${DB_HOST:localhost}      # Default to 'localhost' if DB_HOST is not set
-      port: ${DB_PORT:27017}          # Default to '27017' if DB_PORT is not set
-      database: ${DB_NAME:vehicleDB}  # Default to 'vehicleDB' if DB_NAME is not set
-      username: ${DB_USERNAME:root}  # Default to 'admin' if DB_USERNAME is not set
-      password: ${DB_PASSWORD:root}  # Default to 'admin' if DB_PASSWORD is not set
-      authentication-database: ${MONGO_AUTH_DATABASE:admin}  # Default to 'admin' if MONGO_AUTH_DATABASE is not set
+      host: ${DB_HOST}
+      port: ${DB_PORT}
+      database: ${DB_NAME}
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      authentication-database: ${MONGO_AUTH_DATABASE}
 
   client:
-    url: ${CLIENT_SERVICE_URL:http://localhost:8080}  # Default to 'http://localhost:8080' if CLIENT_SERVICE_URL is not set
+    url: ${CLIENT_SERVICE_URL}
 server:
-  port: 8082
+  port: 8081
 
 logging:
   level:

@@ -45,8 +45,29 @@ public class ClientService {
         }
     }
 
-//    public ClientDto updateClient(String id,
-//                                  ClientDto clientDto) {
-//        return clientRepository.findById()
-//    }
+    public ClientResponseDto updateClient(ClientDto clientDto) {
+
+        Optional<Client> clientrequested = clientRepository.findByIdentityNumber(clientMapper.toEntity(clientDto).getIdentityNumber());
+        Client existingClient = clientrequested.get();
+        Client newClient = clientMapper.toEntity(clientDto);
+        if (newClient.getFirstName() != null) {
+            existingClient.setFirstName(newClient.getFirstName());
+        }
+        if (newClient.getLastName() != null) {
+            existingClient.setLastName(newClient.getLastName());
+        }
+        if (newClient.getEmail() != null) {
+            existingClient.setEmail(newClient.getEmail());
+        }
+        if (newClient.getPhoneNumber() != null) {
+            existingClient.setPhoneNumber(newClient.getPhoneNumber());
+        }
+        if (newClient.getAddress() != null) {
+            existingClient.setAddress(newClient.getAddress());
+        }
+
+        Client updatedClient = clientRepository.save(existingClient);
+
+        return clientMapper.apply(updatedClient);
+    }
 }

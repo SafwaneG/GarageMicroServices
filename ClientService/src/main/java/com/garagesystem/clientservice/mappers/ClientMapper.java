@@ -13,6 +13,7 @@ public class ClientMapper implements Function<Client, ClientResponseDto> {
     public ClientResponseDto apply(Client client) {
         return new ClientResponseDto(
                 client.getId(),
+                client.getIdentityNumber(),
                 client.getFirstName(),
                 client.getLastName(),
                 client.getPhoneNumber(),

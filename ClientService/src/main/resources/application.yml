@@ -3,16 +3,16 @@ spring:
     name: ClientService
 
   server:
-    port: ${SERVER_PORT:8081}  # Default to 8081 if SERVER_PORT is not set, assuming vehicleService uses 8080
+    port: ${SERVER_PORT:8080}
 
   data:
     mongodb:
-      host: ${DB_HOST:localhost}      # Default to 'localhost' if DB_HOST is not set
-      port: ${DB_PORT:27016}          # Default to '27018' if DB_PORT is not set (ensure it's different from vehicleService MongoDB)
-      database: ${DB_NAME:clientDb}   # Default to 'clientDB' if DB_NAME is not set
-      username: ${DB_USERNAME:root}  # Default to 'admin' if DB_USERNAME is not set
-      password: ${DB_PASSWORD:root}  # Default to 'admin' if DB_PASSWORD is not set
-      authentication-database: ${MONGO_AUTH_DATABASE:admin}  # Default to 'admin' if MONGO_AUTH_DATABASE is not set
+      host: ${DB_HOST:localhost}
+      port: ${DB_PORT:27016}
+      database: ${DB_NAME:clientDb}
+      username: ${DB_USERNAME:root}
+      password: ${DB_PASSWORD:root}
+      authentication-database: ${MONGO_AUTH_DATABASE:admin}
 
 logging:
   level:

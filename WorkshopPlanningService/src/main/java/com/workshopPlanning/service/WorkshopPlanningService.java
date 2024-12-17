@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -70,6 +71,7 @@ public class WorkshopPlanningService {
         );
     }
     public void updateMaintenance(String workshopId, String jobId, MaintenanceUpdateRequest maintenanceUpdateRequest) {
+        MaintenanceService maintenanceService = new MaintenanceService();
         MaintenanceStatus newStatus = maintenanceUpdateRequest.getNewStatus();
         Date newEndDate = maintenanceUpdateRequest.getNewEndDate();
         Double newAmount = maintenanceUpdateRequest.getAmount();
@@ -87,7 +89,7 @@ public class WorkshopPlanningService {
         boolean statusChanged = newStatus != jobToUpdate.getStatus();
 
         if (newStatus != null) {
-            MaintenanceService maintenanceService = new MaintenanceService();
+
             VehicleCondition vehicleCondition = maintenanceService.mapStatusToCondition(newStatus);
 
             jobToUpdate.setStatus(newStatus);
@@ -100,22 +102,24 @@ public class WorkshopPlanningService {
 
         workshopPlanningRepo.save(workshopPlanning);
 
+
         if (statusChanged) {
             VehicleResponse vehicleDetails = vehicleService.searchVehicle(jobToUpdate.getRegistrationNumber());
 
             if (vehicleDetails != null) {
+                vehicleService.updateCondition(vehicleDetails.registrationNumber(), maintenanceService.mapStatusToCondition(newStatus));
+
                 // Ensure amount is set (if newAmount is null, set it to 0)
                 System.out.println(newAmount);
                 double amountToSend = (newAmount != null && newStatus == MaintenanceStatus.COMPLETED) ? newAmount : 0;
 
                 WorkshopEvent workshopEvent = new WorkshopEvent(
                         jobToUpdate.getRegistrationNumber(),
-                        vehicleDetails.email(),
                         vehicleDetails.name(),
+                        vehicleDetails.email(),
                         newStatus.toString(),
                         amountToSend // Ensure amount is always included
                 );
-
                 kafkaTemplate.send("workshop-plannified", workshopEvent);
                 System.out.println("Client notified about status change to " + newStatus + " with amount: " + amountToSend);
             } else {
