@@ -13,10 +13,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -490708213484202001L;
+  private static final long serialVersionUID = 5831823564731064193L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WorkshopEvent\",\"namespace\":\"com.workshopPlanning.event\",\"fields\":[{\"name\":\"registrationNumber\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"type\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WorkshopEvent\",\"namespace\":\"com.workshopPlanning.event\",\"fields\":[{\"name\":\"registrationNumber\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"type\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -73,9 +73,10 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   private java.lang.CharSequence registrationNumber;
-  private java.lang.CharSequence email;
   private java.lang.CharSequence name;
+  private java.lang.CharSequence email;
   private java.lang.CharSequence type;
+  private double amount;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -87,15 +88,17 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   /**
    * All-args constructor.
    * @param registrationNumber The new value for registrationNumber
-   * @param email The new value for email
    * @param name The new value for name
+   * @param email The new value for email
    * @param type The new value for type
+   * @param amount The new value for amount
    */
-  public WorkshopEvent(java.lang.CharSequence registrationNumber, java.lang.CharSequence email, java.lang.CharSequence name, java.lang.CharSequence type) {
+  public WorkshopEvent(java.lang.CharSequence registrationNumber, java.lang.CharSequence name, java.lang.CharSequence email, java.lang.CharSequence type, java.lang.Double amount) {
     this.registrationNumber = registrationNumber;
-    this.email = email;
     this.name = name;
+    this.email = email;
     this.type = type;
+    this.amount = amount;
   }
 
   @Override
@@ -109,9 +112,10 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return registrationNumber;
-    case 1: return email;
-    case 2: return name;
+    case 1: return name;
+    case 2: return email;
     case 3: return type;
+    case 4: return amount;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -122,9 +126,10 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: registrationNumber = (java.lang.CharSequence)value$; break;
-    case 1: email = (java.lang.CharSequence)value$; break;
-    case 2: name = (java.lang.CharSequence)value$; break;
+    case 1: name = (java.lang.CharSequence)value$; break;
+    case 2: email = (java.lang.CharSequence)value$; break;
     case 3: type = (java.lang.CharSequence)value$; break;
+    case 4: amount = (java.lang.Double)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -147,23 +152,6 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
-   * Gets the value of the 'email' field.
-   * @return The value of the 'email' field.
-   */
-  public java.lang.CharSequence getEmail() {
-    return email;
-  }
-
-
-  /**
-   * Sets the value of the 'email' field.
-   * @param value the value to set.
-   */
-  public void setEmail(java.lang.CharSequence value) {
-    this.email = value;
-  }
-
-  /**
    * Gets the value of the 'name' field.
    * @return The value of the 'name' field.
    */
@@ -181,6 +169,23 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   /**
+   * Gets the value of the 'email' field.
+   * @return The value of the 'email' field.
+   */
+  public java.lang.CharSequence getEmail() {
+    return email;
+  }
+
+
+  /**
+   * Sets the value of the 'email' field.
+   * @param value the value to set.
+   */
+  public void setEmail(java.lang.CharSequence value) {
+    this.email = value;
+  }
+
+  /**
    * Gets the value of the 'type' field.
    * @return The value of the 'type' field.
    */
@@ -195,6 +200,23 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
    */
   public void setType(java.lang.CharSequence value) {
     this.type = value;
+  }
+
+  /**
+   * Gets the value of the 'amount' field.
+   * @return The value of the 'amount' field.
+   */
+  public double getAmount() {
+    return amount;
+  }
+
+
+  /**
+   * Sets the value of the 'amount' field.
+   * @param value the value to set.
+   */
+  public void setAmount(double value) {
+    this.amount = value;
   }
 
   /**
@@ -239,9 +261,10 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
     implements org.apache.avro.data.RecordBuilder<WorkshopEvent> {
 
     private java.lang.CharSequence registrationNumber;
-    private java.lang.CharSequence email;
     private java.lang.CharSequence name;
+    private java.lang.CharSequence email;
     private java.lang.CharSequence type;
+    private double amount;
 
     /** Creates a new Builder */
     private Builder() {
@@ -258,17 +281,21 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
         this.registrationNumber = data().deepCopy(fields()[0].schema(), other.registrationNumber);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
-      if (isValidValue(fields()[1], other.email)) {
-        this.email = data().deepCopy(fields()[1].schema(), other.email);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.name)) {
-        this.name = data().deepCopy(fields()[2].schema(), other.name);
+      if (isValidValue(fields()[2], other.email)) {
+        this.email = data().deepCopy(fields()[2].schema(), other.email);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
       if (isValidValue(fields()[3], other.type)) {
         this.type = data().deepCopy(fields()[3].schema(), other.type);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
+      }
+      if (isValidValue(fields()[4], other.amount)) {
+        this.amount = data().deepCopy(fields()[4].schema(), other.amount);
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
     }
 
@@ -282,17 +309,21 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
         this.registrationNumber = data().deepCopy(fields()[0].schema(), other.registrationNumber);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.email)) {
-        this.email = data().deepCopy(fields()[1].schema(), other.email);
+      if (isValidValue(fields()[1], other.name)) {
+        this.name = data().deepCopy(fields()[1].schema(), other.name);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.name)) {
-        this.name = data().deepCopy(fields()[2].schema(), other.name);
+      if (isValidValue(fields()[2], other.email)) {
+        this.email = data().deepCopy(fields()[2].schema(), other.email);
         fieldSetFlags()[2] = true;
       }
       if (isValidValue(fields()[3], other.type)) {
         this.type = data().deepCopy(fields()[3].schema(), other.type);
         fieldSetFlags()[3] = true;
+      }
+      if (isValidValue(fields()[4], other.amount)) {
+        this.amount = data().deepCopy(fields()[4].schema(), other.amount);
+        fieldSetFlags()[4] = true;
       }
     }
 
@@ -337,46 +368,6 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
     }
 
     /**
-      * Gets the value of the 'email' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getEmail() {
-      return email;
-    }
-
-
-    /**
-      * Sets the value of the 'email' field.
-      * @param value The value of 'email'.
-      * @return This builder.
-      */
-    public com.workshopPlanning.event.WorkshopEvent.Builder setEmail(java.lang.CharSequence value) {
-      validate(fields()[1], value);
-      this.email = value;
-      fieldSetFlags()[1] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'email' field has been set.
-      * @return True if the 'email' field has been set, false otherwise.
-      */
-    public boolean hasEmail() {
-      return fieldSetFlags()[1];
-    }
-
-
-    /**
-      * Clears the value of the 'email' field.
-      * @return This builder.
-      */
-    public com.workshopPlanning.event.WorkshopEvent.Builder clearEmail() {
-      email = null;
-      fieldSetFlags()[1] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'name' field.
       * @return The value.
       */
@@ -391,9 +382,9 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
       * @return This builder.
       */
     public com.workshopPlanning.event.WorkshopEvent.Builder setName(java.lang.CharSequence value) {
-      validate(fields()[2], value);
+      validate(fields()[1], value);
       this.name = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[1] = true;
       return this;
     }
 
@@ -402,7 +393,7 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
       * @return True if the 'name' field has been set, false otherwise.
       */
     public boolean hasName() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[1];
     }
 
 
@@ -412,6 +403,46 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
       */
     public com.workshopPlanning.event.WorkshopEvent.Builder clearName() {
       name = null;
+      fieldSetFlags()[1] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'email' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getEmail() {
+      return email;
+    }
+
+
+    /**
+      * Sets the value of the 'email' field.
+      * @param value The value of 'email'.
+      * @return This builder.
+      */
+    public com.workshopPlanning.event.WorkshopEvent.Builder setEmail(java.lang.CharSequence value) {
+      validate(fields()[2], value);
+      this.email = value;
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'email' field has been set.
+      * @return True if the 'email' field has been set, false otherwise.
+      */
+    public boolean hasEmail() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'email' field.
+      * @return This builder.
+      */
+    public com.workshopPlanning.event.WorkshopEvent.Builder clearEmail() {
+      email = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -456,15 +487,55 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
       return this;
     }
 
+    /**
+      * Gets the value of the 'amount' field.
+      * @return The value.
+      */
+    public double getAmount() {
+      return amount;
+    }
+
+
+    /**
+      * Sets the value of the 'amount' field.
+      * @param value The value of 'amount'.
+      * @return This builder.
+      */
+    public com.workshopPlanning.event.WorkshopEvent.Builder setAmount(double value) {
+      validate(fields()[4], value);
+      this.amount = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'amount' field has been set.
+      * @return True if the 'amount' field has been set, false otherwise.
+      */
+    public boolean hasAmount() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'amount' field.
+      * @return This builder.
+      */
+    public com.workshopPlanning.event.WorkshopEvent.Builder clearAmount() {
+      fieldSetFlags()[4] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public WorkshopEvent build() {
       try {
         WorkshopEvent record = new WorkshopEvent();
         record.registrationNumber = fieldSetFlags()[0] ? this.registrationNumber : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.email = fieldSetFlags()[1] ? this.email : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.name = fieldSetFlags()[2] ? this.name : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.email = fieldSetFlags()[2] ? this.email : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.type = fieldSetFlags()[3] ? this.type : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.amount = fieldSetFlags()[4] ? this.amount : (java.lang.Double) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -499,11 +570,13 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
   {
     out.writeString(this.registrationNumber);
 
-    out.writeString(this.email);
-
     out.writeString(this.name);
 
+    out.writeString(this.email);
+
     out.writeString(this.type);
+
+    out.writeDouble(this.amount);
 
   }
 
@@ -514,29 +587,35 @@ public class WorkshopEvent extends org.apache.avro.specific.SpecificRecordBase i
     if (fieldOrder == null) {
       this.registrationNumber = in.readString(this.registrationNumber instanceof Utf8 ? (Utf8)this.registrationNumber : null);
 
-      this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
-
       this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+
+      this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
 
       this.type = in.readString(this.type instanceof Utf8 ? (Utf8)this.type : null);
 
+      this.amount = in.readDouble();
+
     } else {
-      for (int i = 0; i < 4; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.registrationNumber = in.readString(this.registrationNumber instanceof Utf8 ? (Utf8)this.registrationNumber : null);
           break;
 
         case 1:
-          this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
+          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
           break;
 
         case 2:
-          this.name = in.readString(this.name instanceof Utf8 ? (Utf8)this.name : null);
+          this.email = in.readString(this.email instanceof Utf8 ? (Utf8)this.email : null);
           break;
 
         case 3:
           this.type = in.readString(this.type instanceof Utf8 ? (Utf8)this.type : null);
+          break;
+
+        case 4:
+          this.amount = in.readDouble();
           break;
 
         default:

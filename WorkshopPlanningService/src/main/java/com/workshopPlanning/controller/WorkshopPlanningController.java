@@ -8,6 +8,7 @@ import com.workshopPlanning.service.WorkshopPlanningService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,11 @@ public class WorkshopPlanningController {
     ) {
             workshopPlanningService.updateMaintenance(idWorkshop, idMaintenance,maintenanceUpdateRequest);
         }
-
+    @GetMapping("/status")
+    public List<String> getAllStatusWorkshop() {
+        return Arrays.stream(MaintenanceStatus.values())
+                .map(Enum::name)
+                .toList();
+    }
     }
 

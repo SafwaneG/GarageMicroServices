@@ -7,6 +7,15 @@ import java.util.Date;
 public class MaintenanceUpdateRequest {
     private MaintenanceStatus newStatus;
     private Date newEndDate;
+    private Double amount;
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
 
     // Getters and setters
     public MaintenanceStatus getNewStatus() {

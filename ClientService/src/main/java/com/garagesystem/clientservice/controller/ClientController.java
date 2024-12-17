@@ -36,10 +36,10 @@ public  List<String> getAllIdentityNumber(){
         return clientService.getClient(identityNumber);
     }
 
-//    @PutMapping
-//    public ClientDto updateClient(@RequestBody ClientDto clientDto){
-//        return clientService.updateClient(clientDto);
-//    }
+    @PutMapping
+   public ClientResponseDto updateClient(@RequestBody ClientDto clientDto){
+        return clientService.updateClient(clientDto);
+   }
 
 
 }

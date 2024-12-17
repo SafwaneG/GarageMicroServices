@@ -13,6 +13,8 @@ spring:
 
   client:
     url: ${CLIENT_SERVICE_URL}
+server:
+  port: 8081
 
 logging:
   level:
