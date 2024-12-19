@@ -5,12 +5,4 @@ routes:
   client-service-url: ${CLIENT_SERVICE_URL:http://localhost:8080}
   vehicle-service-url: ${VEHICLE_SERVICE_URL:http://localhost:8082}
   workshop-service-url: ${WORKSHOP_SERVICE_URL:http://localhost:8083}
-spring:
-  cloud:
-    gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
+
