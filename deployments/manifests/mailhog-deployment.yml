@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mailhog
+  namespace: garage-ns
   labels:
     app: mailhog
 spec:
@@ -24,6 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mail-service
+  namespace: garage-ns
 spec:
   selector:
     app: mailhog

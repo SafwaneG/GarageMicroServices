@@ -4,8 +4,8 @@
 /httpRequests/
 /dataSources/
 /dataSources.local.xml
-/garage-front-end/build
-/garage-front-end/node_modules
+/garage-front-end/build/**
+/garage-front-end/node_modules/**
 # Maven target directories
 **/target/
 # Containers volumes

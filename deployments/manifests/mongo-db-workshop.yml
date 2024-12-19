@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mongo-workshop-pv-claim # Name of PVC
+  namespace: garage-ns
   labels:
     app: mongo-workshop
     tier: database
@@ -21,6 +22,7 @@ metadata:
   labels:
     app: mongo-workshop
     tier: database
+  namespace: garage-ns
 spec:
   selector: # Must match labels in the template
     matchLabels:
@@ -59,7 +61,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-workshop # Use a unique name for the service
+  name: mongo-workshop
+  namespace: garage-ns
   labels:
     app: mongo-workshop
     tier: database

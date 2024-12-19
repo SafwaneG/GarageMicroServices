@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-service
+  namespace: garage-ns
 spec:
   replicas: 1
   selector:
@@ -11,6 +12,7 @@ spec:
     metadata:
       labels:
         app: frontend-service
+        version: v1
     spec:
       containers:
         - name: frontend-service
@@ -22,12 +24,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  namespace: garage-ns
 spec:
   selector:
     app: frontend-service
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 80
-      nodePort: 30080
-  type: LoadBalancer
+      nodePort: 30001
+      name: http-frontend
+  type: NodePort

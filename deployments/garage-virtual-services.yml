@@ -1,0 +1,328 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: springboot-crud-svc
+  namespace: garage-ns
+spec:
+  hosts:
+    - springboot-crud-svc
+  http:
+    - route:
+        - destination:
+            host: springboot-crud-svc
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: springboot-crud-svc
+  namespace: garage-ns
+spec:
+  host: springboot-crud-svc
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: springboot-crud-svc
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mongo
+  namespace: garage-ns
+spec:
+  hosts:
+    - mongo
+  http:
+    - route:
+        - destination:
+            host: mongo
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mongo
+  namespace: garage-ns
+spec:
+  host: mongo
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: mongo
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: springboot-vehicle-svc
+  namespace: garage-ns
+spec:
+  hosts:
+    - springboot-vehicle-svc
+  http:
+    - route:
+        - destination:
+            host: springboot-vehicle-svc
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: springboot-vehicle-svc
+  namespace: garage-ns
+spec:
+  host: springboot-vehicle-svc
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: springboot-vehicle-svc
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mongo-vehicle
+  namespace: garage-ns
+spec:
+  hosts:
+    - mongo-vehicle
+  http:
+    - route:
+        - destination:
+            host: mongo-vehicle
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mongo-vehicle
+  namespace: garage-ns
+spec:
+  host: mongo-vehicle
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: mongo-vehicle
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - garage-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /frontend
+      route:
+        - destination:
+            host: frontend-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: frontend-service
+  namespace: garage-ns
+spec:
+  host: frontend-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: frontend-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: workshop-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - workshop-service
+  http:
+    - route:
+        - destination:
+            host: workshop-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: workshop-service
+  namespace: garage-ns
+spec:
+  host: workshop-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: workshop-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mongo-workshop
+  namespace: garage-ns
+spec:
+  hosts:
+    - mongo-workshop
+  http:
+    - route:
+        - destination:
+            host: mongo-workshop
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mongo-workshop
+  namespace: garage-ns
+spec:
+  host: mongo-workshop
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: mongo-workshop
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kafka-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - kafka-service
+  http:
+    - route:
+        - destination:
+            host: kafka-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: kafka-service
+  namespace: garage-ns
+spec:
+  host: kafka-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: kafka-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: zookeeper-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - zookeeper-service
+  http:
+    - route:
+        - destination:
+            host: zookeeper-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: zookeeper-service
+  namespace: garage-ns
+spec:
+  host: zookeeper-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: zookeeper-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: schema-registry-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - schema-registry-service
+  http:
+    - route:
+        - destination:
+            host: schema-registry-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: schema-registry-service
+  namespace: garage-ns
+spec:
+  host: schema-registry-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: schema-registry-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: notification-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - notification-service
+  http:
+    - route:
+        - destination:
+            host: notification-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: notification-service
+  namespace: garage-ns
+spec:
+  host: notification-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: notification-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mail-service
+  namespace: garage-ns
+spec:
+  hosts:
+    - mail-service
+  http:
+    - route:
+        - destination:
+            host: mail-service
+            subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mail-service
+  namespace: garage-ns
+spec:
+  host: mail-service
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+        name: mail-service

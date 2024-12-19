@@ -6,6 +6,7 @@ metadata:
   labels:
     app: mongo
     tier: database
+  namespace: garage-ns
 spec:
   accessModes:
     - ReadWriteOnce # Specifies the access mode for the claim
@@ -18,6 +19,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongo
+  namespace: garage-ns
   labels:
     app: mongo
     tier: database
@@ -63,6 +65,7 @@ metadata:
   labels:
     app: mongo
     tier: database
+  namespace: garage-ns
 spec:
   ports:
     - port: 27017

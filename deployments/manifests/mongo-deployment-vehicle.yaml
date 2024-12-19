@@ -6,6 +6,7 @@ metadata:
   labels:
     app: mongo-vehicle
     tier: database
+  namespace: garage-ns
 spec:
   accessModes:
     - ReadWriteOnce # Only one node can write at a time
@@ -21,6 +22,7 @@ metadata:
   labels:
     app: mongo-vehicle
     tier: database
+  namespace: garage-ns
 spec:
   selector: # Must match labels in the template
     matchLabels:
@@ -63,6 +65,7 @@ metadata:
   labels:
     app: mongo-vehicle
     tier: database
+  namespace: garage-ns
 spec:
   ports:
     - port: 27017
