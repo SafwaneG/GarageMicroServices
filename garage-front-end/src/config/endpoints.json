@@ -1,9 +1,9 @@
 {
-  "addNewClient": "http://api-gateway-service:9090/client",
-  "identityNumber": "http://api-gateway-service:9090/client/identityNumber",
-  "addNewVehicle": "http://api-gateway-service:9090/api/vehicle",
-  "vehicleCondition": "http://api-gateway-service:9090/api/vehicle/conditions",
-  "maintenanceStatus": "http://api-gateway-service:9090/workshopPlanning/status",
-  "registrationsNumbers": "http://api-gateway-service:9090/api/vehicle/registrationNumbers",
-  "createWorkshop": "http://api-gateway-service:9090/workshopPlanning"
+  "addNewClient": "http://10.100.32.7:9090/client",
+  "identityNumber": "http://10.100.32.7:9090/api/identityNumber",
+  "addNewVehicle": "http://10.100.32.7:9090/api/vehicle",
+  "vehicleCondition": "http://10.100.32.7:9090/api/vehicle/conditions",
+  "maintenanceStatus": "http://10.100.32.7:9090/workshopPlanning/status",
+  "registrationsNumbers": "http://10.100.32.7:9090/api/vehicle/registrationNumbers",
+  "createWorkshop": "http://10.100.32.7:9090/workshopPlanning"
 }
